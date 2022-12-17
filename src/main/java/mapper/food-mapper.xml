@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Food">
+    <insert id="insertFood">
+        insert into FoodCRUD (fname, detail,kind,fpoint,price,customer,brand)
+        values (#{fname} , #{detail},#{kind},#{fpoint},#{price},#{customer},#{brand})
+    </insert>
+    <update id="updateFood">
+        update FoodCRUD
+        set fname=#{fname}, detail=#{detail},kind=#{kind} ,fpoint=#{fpoint}, price=#{price},customer=#{customer},brand=#{brand} where seq=#{seq}
+    </update>
+    <delete id="deleteFood">
+        delete from FoodCRUD where seq=#{seq}
+    </delete>
+    <select id="getFood" resultType="food">
+        select * from FoodCRUD where seq=#{seq}
+    </select>
+    <select id="getFoodList" resultType="food">
+        select * from FoodCRUD order by seq desc
+    </select>
+</mapper>
